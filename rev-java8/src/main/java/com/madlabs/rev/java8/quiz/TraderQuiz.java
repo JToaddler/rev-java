@@ -5,6 +5,7 @@ import static java.util.stream.Collectors.toList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.madlabs.rev.java8.modal.Trader;
@@ -21,7 +22,7 @@ public class TraderQuiz {
 		List<Trader> traders = Arrays.asList(raoul, mario, alan, brian);
 
 		List<Transaction> transactions = Arrays.asList(new Transaction(brian, 2011, 300),
-				new Transaction(raoul, 2012, 10009), new Transaction(raoul, 2011, 400),
+				new Transaction(raoul, 2012, 1000), new Transaction(raoul, 2011, 400),
 				new Transaction(mario, 2012, 710), new Transaction(mario, 2012, 700), new Transaction(alan, 2012, 950));
 
 		// Find all transactions in the year 2011 and sort them by value (small to
@@ -59,9 +60,19 @@ public class TraderQuiz {
 		System.out.println("What’s the highest value of all the transactions"
 				+ transactions.stream().max(Comparator.comparing(Transaction::getValue)).get().getValue());
 
+		// Sum of all value by reduction
+		System.out.println("sum of all transaction value :"
+				+ transactions.stream().map(Transaction::getValue).collect(Collectors.reducing(0, (op1, op2) -> {
+					return op1 + op2;
+				})));
+
 		// Find the transaction with the smallest value
 		System.out.println("Find the transaction with the smallest value"
 				+ transactions.stream().min(Comparator.comparing(Transaction::getValue)));
 		Stream.iterate(0, n -> n + 2).limit(10).forEach(System.out::println);
+
+			System.out.println(
+					transactions.stream().map(txns -> txns.getTrader().getName()).distinct().collect(Collectors.joining(", ")));
+
 	}
 }

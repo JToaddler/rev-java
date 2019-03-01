@@ -1,0 +1,44 @@
+As of today, From the application API standpoint - we have compiled modeled 3 collection.
+
+So the collection are broken down based on 
+
+	API functionality
+	DB Updates made from out side of API - from Batch
+	Ease of Pulling Ad-hoc reports for business
+
+=
+So we have 3 collections & Index ( Unique Index - ACN,Sparse index on Confirmation number,Composite Unique Index on EMO APP ID , Createdd Partner ID
+
+	application
+		- this collections mirror application object of service. But fields which are getting updated are kept outside of
+		  the field.
+		  i.e. ACN, Effective Date,PIN,Confirmation Number,APP Source.
+		  
+		  Field that are available in level 0 are for reporting and updated outside of application.
+		  Indexed fields are at level 0 to avoid index rebuilding.
+		  
+		  we are still looking for an opertunity to optimize the this modal. because, 
+		  For individual setXXX endpoints will have to replace the correct endpoints document.  we are still accessing how efficiently mongo performs 
+		  embedded document update.
+		  
+		  Medicare Ins can be moved out as its frequently quried & updated with HCID using Batch. when embedded docs are stored, Mongo will have to identify the indexed field by scanning through all
+		  fields in the documents and result in longer write time.( No change in retrival performance, if we move the nested embedded doc will to lower levels).
+		  If we move embedded doc to loweer level, write will be faster.
+		  
+		  
+		  Improvment - Applicant Array/Prior Coverage Array Can be changed to Object.
+		  
+	access_control
+		-
+	application_detail
+		-
+	application_PDF
+		- 
+	acn_log
+		- 
+
+Check list
+	- reverse verification - map DB2 Columns to collection fields to make sure everythings is included and nothing left out
+	- 
+	
+Note On JAR : Since documents keys are case sensitive & type sensitive, - can we have seperate DAO contract JAR ? So it cant be shared with other modules as well.
