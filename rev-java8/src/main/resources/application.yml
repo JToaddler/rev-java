@@ -1,6 +1,1 @@
-spring.application.name=rev-java8
-
-spring.hr.driverClassName=com.mysql.jdbc.Driver
-spring.hr.jdbcUrl=jdbc:mysql://localhost:3306/world
-spring.hr.username=hr
-spring.hr.password=dummy
+spring:  application:    name: test  main:    banner-mode: off  profiles:    active:development  hr:    driverClassName:com.mysql.jdbc.Driver    url:jdbc:mysql://localhost:3306/world    username=hr    password=dummy

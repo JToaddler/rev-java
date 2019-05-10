@@ -5,6 +5,6 @@ import com.madlabs.rev.java8.modal.Country;
 @FunctionalInterface
 public interface CountryFilter {
 
-	public boolean filterCountry(Country country);
+	public boolean filterCountry(Country country,String name);
 
 }

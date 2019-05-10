@@ -29,6 +29,7 @@ public class WorldDao {
 	public List<Country> getWorldList() {
 
 		return worldJdbcTemplate.query("SELECT * FROM COUNTRY", new WorldRowMapper());
+
 	}
 
 	public List<City> getCityList(Set<String> countryList) {
