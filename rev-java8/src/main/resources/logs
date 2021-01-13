@@ -115,5 +115,115 @@ Caused by: jcifs.CIFSException: Server does not support SMB2
 
 Server support SM2 and above but client uses fallover statergy from SMB1 to SMB2
 
-
-
+18:13:53.019 [main] DEBUG jcifs.smb.SmbTransportPoolImpl - Scheduling transport connection for removal Transport1[Test.com/XXXX:XXXX:XXX:9999:XXXX:XXXX:999:XXXX,state=4,signingEnforced=false,usage=1] (198761306)
+18:13:53.027 [main] DEBUG jcifs.smb.DfsImpl - Getting domain controller for Test.com failed
+jcifs.smb.SmbException: Failed to connect: Test.com/XXXX:XXXX:XXX:9999:XXXX:XXXX:999:XXXX
+	at jcifs.smb.SmbTransportImpl.ensureConnected(SmbTransportImpl.java:689)
+	at jcifs.smb.SmbTransportPoolImpl.getSmbTransport(SmbTransportPoolImpl.java:217)
+	at jcifs.smb.SmbTransportPoolImpl.getSmbTransport(SmbTransportPoolImpl.java:48)
+	at jcifs.smb.DfsImpl.getDcReferrals(DfsImpl.java:189)
+	at jcifs.smb.DfsImpl.getDc(DfsImpl.java:233)
+	at jcifs.smb.DfsImpl.getTrustedDomains(DfsImpl.java:112)
+	at jcifs.smb.DfsImpl.resolve(DfsImpl.java:352)
+	at jcifs.smb.DfsImpl.resolve(DfsImpl.java:326)
+	at jcifs.smb.SmbTreeConnection.connectHost(SmbTreeConnection.java:530)
+	at jcifs.smb.SmbTreeConnection.connectHost(SmbTreeConnection.java:489)
+	at jcifs.smb.SmbTreeConnection.connect(SmbTreeConnection.java:465)
+	at jcifs.smb.SmbTreeConnection.connectWrapException(SmbTreeConnection.java:426)
+	at jcifs.smb.SmbFile.ensureTreeConnected(SmbFile.java:558)
+	at jcifs.smb.SmbFileOutputStream.<init>(SmbFileOutputStream.java:112)
+	at jcifs.smb.SmbFileOutputStream.<init>(SmbFileOutputStream.java:95)
+	at jcifs.smb.SmbFileOutputStream.<init>(SmbFileOutputStream.java:76)
+	at jcifs.smb.SmbFile.getOutputStream(SmbFile.java:2150)
+	at com.smb.text.SMBMainTest.main(SMBMainTest.java:30)
+Caused by: jcifs.util.transport.TransportException: java.net.ConnectException: Connection timed out: no further information
+	at jcifs.util.transport.Transport.run(Transport.java:759)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: java.net.ConnectException: Connection timed out: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:589)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:549)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:597)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:333)
+	at java.base/java.net.Socket.connect(Socket.java:648)
+	at jcifs.smb.SmbTransportImpl.negotiate(SmbTransportImpl.java:494)
+	at jcifs.smb.SmbTransportImpl.doConnect(SmbTransportImpl.java:706)
+	at jcifs.util.transport.Transport.run(Transport.java:732)
+	... 1 common frames omitted
+18:13:53.028 [main] DEBUG jcifs.smb.DfsImpl - Failed to connect to domain controller for Test.com
+18:13:53.029 [main] DEBUG jcifs.smb.SmbTransportPoolImpl - Removing transport connection Transport1[Test.com/XXXX:XXXX:XXX:9999:XXXX:XXXX:999:XXXX,state=4,signingEnforced=false,usage=0] (198761306)
+18:13:53.029 [main] DEBUG jcifs.smb.SmbTransportPoolImpl - New transport connection Transport2[Dummy-pc/999.999.999.999:999,state=0,signingEnforced=false,usage=1]
+18:13:53.029 [main] DEBUG jcifs.util.transport.Transport - Connecting Transport2
+18:13:53.029 [Transport2] DEBUG jcifs.smb.SmbTransportImpl - Connecting in state 1 addr 169.254.203.121
+18:13:53.134 [Transport2] DEBUG jcifs.smb.SmbTransportImpl - Negotiation response on Transport2 :jcifs.internal.SmbNegotiation@8df28f6
+18:13:53.135 [Transport2] DEBUG jcifs.smb.SmbTransportImpl - Signature negotiation enforced false (server false) enabled false (server true)
+18:13:53.140 [main] DEBUG jcifs.smb.SmbTransportImpl - Establishing new session SmbSession[credentials=Test.com\arockiaDummy,targetHost=Dummy-pc,targetDomain=null,uid=0,connectionState=0,usage=1] on Transport2
+18:13:53.144 [main] DEBUG jcifs.smb.SmbTreeImpl - Connection state was 0
+18:13:53.144 [main] DEBUG jcifs.smb.SmbTreeImpl - treeConnect: unc=\\Dummy-pc\NAS,service=?????
+18:13:53.145 [main] DEBUG jcifs.smb.SmbSessionImpl - sessionSetup: Test.com\arockiaDummy
+18:13:53.145 [main] DEBUG jcifs.smb.SmbSessionImpl - Remote host is Dummy-pc
+18:13:53.193 [main] DEBUG jcifs.smb.NtlmPasswordAuthenticator - Have initial token NegTokenInit[flags=0,mechs=[1.3.6.1.4.1.311.2.2.30, 1.3.6.1.4.1.311.2.2.10],mic=null]
+18:13:53.204 [main] DEBUG jcifs.smb.SmbTransportImpl - Breaking on error command=SMB2_SESSION_SETUP,status=More data is available.,flags=0x0001,mid=2,wordCount=0,byteCount=0
+18:13:53.425 [main] DEBUG jcifs.smb.NtlmContext - Sign key is 15A0E8CE783D45840098954C3EC10B95
+18:13:53.425 [main] DEBUG jcifs.smb.NtlmContext - Verify key is 77DA4A3A76CE25233C95EFCC8EE2C206
+18:13:53.425 [main] DEBUG jcifs.smb.NtlmContext - Seal key is 4864744396C585B8F109B9F5FCDCF3B1
+18:13:53.425 [main] DEBUG jcifs.smb.NtlmContext - Server seal key is ACD73309C8DD21605E8BDD66F48F7C59
+18:13:53.426 [main] DEBUG jcifs.smb.NtlmContext - Digest 7FF176865CF3EC5E6EA92170C172550E
+18:13:53.426 [main] DEBUG jcifs.smb.NtlmContext - Truncated 7FF176865CF3EC5E
+18:13:53.426 [main] DEBUG jcifs.smb.NtlmContext - Encrypted DC2488306AB2699E
+18:13:53.426 [main] DEBUG jcifs.smb.SpnegoContext - Out Mech list [1.3.6.1.4.1.311.2.2.10]
+18:13:53.426 [main] DEBUG jcifs.smb.SpnegoContext - Out Mech list encoded 300C060A2B06010401823702020A
+18:13:53.426 [main] DEBUG jcifs.smb.SpnegoContext - Out Mech list MIC 01000000DC2488306AB2699E00000000
+18:13:53.429 [main] DEBUG jcifs.smb.SpnegoContext - In Mech list [1.3.6.1.4.1.311.2.2.10]
+18:13:53.429 [main] DEBUG jcifs.smb.SpnegoContext - In Mech list encoded 300C060A2B06010401823702020A
+18:13:53.429 [main] DEBUG jcifs.smb.SpnegoContext - In Mech list MIC 01000000112A99BDF5B71AB200000000
+18:13:53.429 [main] DEBUG jcifs.smb.NtlmContext - Digest 80D4CF01392B10942879757676074BA2
+18:13:53.429 [main] DEBUG jcifs.smb.NtlmContext - Truncated 80D4CF01392B1094
+18:13:53.429 [main] DEBUG jcifs.smb.NtlmContext - Decrypted 112A99BDF5B71AB2
+18:13:53.429 [main] DEBUG jcifs.smb.SmbSessionImpl - Context is established
+18:13:53.438 [main] DEBUG jcifs.smb.SmbTreeImpl - Secure negotiation does not apply
+18:13:53.438 [main] DEBUG jcifs.smb.SmbTreeConnection - Switching tree
+18:13:53.438 [main] DEBUG jcifs.smb.SmbTreeConnection - Acquired tree on switch SmbTree[share=NAS,service=null,tid=1,inDfs=false,inDomainDfs=false,connectionState=2,usage=2]
+18:13:53.438 [main] DEBUG jcifs.smb.SmbFile - openUnshared: \test.txt flags: 52 access: 2 attrs: 80 options: 0
+18:13:53.440 [main] DEBUG jcifs.internal.smb2.create.Smb2CreateRequest - Opening test.txt
+18:13:53.441 [main] DEBUG jcifs.internal.smb2.create.Smb2CreateRequest - Flags are 0000
+18:13:53.443 [Transport2] DEBUG jcifs.internal.smb2.create.Smb2CreateResponse - Opened test.txt: 00000000280000000100000028000000
+18:13:53.447 [main] DEBUG jcifs.smb.SmbFileOutputStream - write: fid=FileHandle \test.txt [fid=00000000280000000100000028000000,tree=1,flags=52,access=2,attrs=0,options=0],off=0,len=7
+18:13:53.451 [main] DEBUG jcifs.internal.smb2.create.Smb2CreateRequest - Opening test.txt
+18:13:53.451 [main] DEBUG jcifs.internal.smb2.create.Smb2CreateRequest - Flags are 0000
+18:13:53.451 [main] DEBUG jcifs.internal.smb2.create.Smb2CloseRequest - Closing FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF (\test.txt)
+18:13:53.453 [Transport2] DEBUG jcifs.internal.smb2.create.Smb2CreateResponse - Opened test.txt: 01000000280000000500000028000000
+18:13:53.453 [Transport2] DEBUG jcifs.smb.SmbTransportImpl - Compound next command 72 read size 72 remain 200
+18:13:53.454 [Transport2] DEBUG jcifs.smb.SmbTransportImpl - Compound next command 0 read size 128 remain 128
+18:13:53.454 [Transport2] DEBUG jcifs.internal.smb2.create.Smb2CloseResponse - Closed FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF (\test.txt)
+18:13:53.454 [main] DEBUG jcifs.smb.SmbFile - queryPath: \test.txt
+18:13:53.455 [main] DEBUG jcifs.internal.smb2.create.Smb2CreateRequest - Opening test.txt
+18:13:53.455 [main] DEBUG jcifs.internal.smb2.create.Smb2CreateRequest - Flags are 0000
+18:13:53.455 [main] DEBUG jcifs.internal.smb2.create.Smb2CloseRequest - Closing FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF (\test.txt)
+18:13:53.456 [Transport2] DEBUG jcifs.internal.smb2.create.Smb2CreateResponse - Opened test.txt: 02000000280000000900000028000000
+18:13:53.457 [Transport2] DEBUG jcifs.smb.SmbTransportImpl - Compound next command 0 read size 128 remain 128
+18:13:53.457 [Transport2] DEBUG jcifs.internal.smb2.create.Smb2CloseResponse - Closed FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF (\test.txt)
+18:13:53.457 [main] DEBUG jcifs.internal.smb2.create.Smb2CreateRequest - Opening test.txt
+18:13:53.457 [main] DEBUG jcifs.internal.smb2.create.Smb2CreateRequest - Flags are 0000
+18:13:53.457 [main] DEBUG jcifs.internal.smb2.create.Smb2CloseRequest - Closing FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF (\test.txt)
+18:13:53.458 [Transport2] DEBUG jcifs.internal.smb2.create.Smb2CreateResponse - Opened test.txt: 03000000280000000D00000028000000
+18:13:53.459 [Transport2] DEBUG jcifs.smb.SmbTransportImpl - Compound next command 72 read size 72 remain 200
+18:13:53.459 [Transport2] DEBUG jcifs.smb.SmbTransportImpl - Compound next command 0 read size 128 remain 128
+18:13:53.459 [Transport2] DEBUG jcifs.internal.smb2.create.Smb2CloseResponse - Closed FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF (\test.txt)
+18:13:53.459 [main] DEBUG jcifs.smb.SmbFileHandleImpl - Closing file handle FileHandle \test.txt [fid=00000000280000000100000028000000,tree=1,flags=52,access=2,attrs=0,options=0]
+18:13:53.460 [main] DEBUG jcifs.internal.smb2.create.Smb2CloseRequest - Closing 00000000280000000100000028000000 ()
+18:13:53.460 [Transport2] DEBUG jcifs.internal.smb2.create.Smb2CloseResponse - Closed 00000000280000000100000028000000 ()
+18:13:53.461 [main] DEBUG jcifs.smb.SmbTreeConnection - Tree connection no longer in use, release tree SmbTree[share=NAS,service=null,tid=1,inDfs=false,inDomainDfs=false,connectionState=2,usage=2]
+18:13:53.461 [main] DEBUG jcifs.smb.SmbTreeImpl - Usage dropped to zero, release session
+18:13:53.461 [main] DEBUG jcifs.smb.SmbSessionImpl - Usage dropped to zero, release connection Transport2[Dummy-pc/999.999.999.999:999,state=3,signingEnforced=false,usage=1]
+18:13:53.462 [Thread-0] DEBUG jcifs.smb.SmbTransportPoolImpl - Closing pool
+18:13:53.462 [Thread-0] DEBUG jcifs.smb.SmbTransportImpl - Disconnecting transport Transport2[Dummy-pc/999.999.999.999:999,state=5,signingEnforced=false,usage=0]
+18:13:53.462 [Thread-0] DEBUG jcifs.smb.SmbSessionImpl - Logging off session on Transport2[Dummy-pc/999.999.999.999:999,state=5,signingEnforced=false,usage=1]
+18:13:53.462 [Thread-0] DEBUG jcifs.smb.SmbSessionImpl - Disconnect tree on logoff
+18:13:53.462 [Thread-0] DEBUG jcifs.smb.SmbSessionImpl - Reacquire transport
+18:13:53.462 [Thread-0] DEBUG jcifs.util.transport.Transport - Trying to connect a disconnected transport
+18:13:53.463 [Thread-0] DEBUG jcifs.smb.SmbSessionImpl - Usage dropped to zero, release connection Transport2[Dummy-pc/999.999.999.999:999,state=5,signingEnforced=false,usage=2]
+18:13:53.464 [Thread-0] DEBUG jcifs.util.transport.Transport - Trying to connect a disconnected transport
+18:13:53.465 [Thread-0] DEBUG jcifs.smb.SmbTransportPoolImpl - Scheduling transport connection for removal Transport2[Dummy-pc/999.999.999.999:999,state=5,signingEnforced=false,usage=0] (689373234)
+18:13:53.465 [Thread-0] DEBUG jcifs.smb.SmbTransportPoolImpl - Removing transport connection Transport2[Dummy-pc/999.999.999.999:999,state=6,signingEnforced=false,usage=0] (689373234)
+18:13:53.465 [Transport2] DEBUG jcifs.util.transport.Transport - Disconnected
