@@ -1,0 +1,63 @@
+17:44:46.678 [main] DEBUG jcifs.smb.SmbTreeConnection - Referral failed, trying next
+jcifs.smb.SmbException: Failed to connect: Anto-pc/XXXX:XXXX:XXX:9999:XXXX:XXXX:999:XXXX
+	at jcifs.smb.SmbTransportImpl.ensureConnected(SmbTransportImpl.java:689)
+	at jcifs.smb.SmbTransportPoolImpl.getSmbTransport(SmbTransportPoolImpl.java:217)
+	at jcifs.smb.SmbTransportPoolImpl.getSmbTransport(SmbTransportPoolImpl.java:48)
+	at jcifs.smb.SmbTreeConnection.connectHost(SmbTreeConnection.java:565)
+	at jcifs.smb.SmbTreeConnection.connectHost(SmbTreeConnection.java:489)
+	at jcifs.smb.SmbTreeConnection.connect(SmbTreeConnection.java:465)
+	at jcifs.smb.SmbTreeConnection.connectWrapException(SmbTreeConnection.java:426)
+	at jcifs.smb.SmbFile.ensureTreeConnected(SmbFile.java:558)
+	at jcifs.smb.SmbFileOutputStream.<init>(SmbFileOutputStream.java:112)
+	at jcifs.smb.SmbFileOutputStream.<init>(SmbFileOutputStream.java:95)
+	at jcifs.smb.SmbFileOutputStream.<init>(SmbFileOutputStream.java:76)
+	at jcifs.smb.SmbFile.getOutputStream(SmbFile.java:2150)
+	at com.smb.text.SMBMainTest.main(SMBMainTest.java:30)
+Caused by: jcifs.util.transport.TransportException: java.net.SocketException: Connection reset
+	at jcifs.util.transport.Transport.run(Transport.java:759)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:323)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:350)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:803)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:982)
+	at jcifs.util.transport.Transport.readn(Transport.java:70)
+	at jcifs.smb.SmbTransportImpl.peekKey(SmbTransportImpl.java:828)
+	at jcifs.smb.SmbTransportImpl.negotiatePeek(SmbTransportImpl.java:603)
+	at jcifs.smb.SmbTransportImpl.negotiate(SmbTransportImpl.java:512)
+	at jcifs.smb.SmbTransportImpl.doConnect(SmbTransportImpl.java:706)
+	at jcifs.util.transport.Transport.run(Transport.java:732)
+	... 1 common frames omitted
+Exception in thread "main" jcifs.smb.SmbException: Failed to connect: Anto-pc/XXXX:XXXX:XXX:9999:XXXX:XXXX:999:XXXX
+	at jcifs.smb.SmbTransportImpl.ensureConnected(SmbTransportImpl.java:689)
+	at jcifs.smb.SmbTransportPoolImpl.getSmbTransport(SmbTransportPoolImpl.java:217)
+	at jcifs.smb.SmbTransportPoolImpl.getSmbTransport(SmbTransportPoolImpl.java:48)
+	at jcifs.smb.SmbTreeConnection.connectHost(SmbTreeConnection.java:565)
+	at jcifs.smb.SmbTreeConnection.connectHost(SmbTreeConnection.java:489)
+	at jcifs.smb.SmbTreeConnection.connect(SmbTreeConnection.java:465)
+	at jcifs.smb.SmbTreeConnection.connectWrapException(SmbTreeConnection.java:426)
+	at jcifs.smb.SmbFile.ensureTreeConnected(SmbFile.java:558)
+	at jcifs.smb.SmbFileOutputStream.<init>(SmbFileOutputStream.java:112)
+	at jcifs.smb.SmbFileOutputStream.<init>(SmbFileOutputStream.java:95)
+	at jcifs.smb.SmbFileOutputStream.<init>(SmbFileOutputStream.java:76)
+	at jcifs.smb.SmbFile.getOutputStream(SmbFile.java:2150)
+	at com.smb.text.SMBMainTest.main(SMBMainTest.java:30)
+Caused by: jcifs.util.transport.TransportException: java.net.SocketException: Connection reset
+	at jcifs.util.transport.Transport.run(Transport.java:759)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:323)
+	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:350)
+	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:803)
+	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:982)
+	at jcifs.util.transport.Transport.readn(Transport.java:70)
+	at jcifs.smb.SmbTransportImpl.peekKey(SmbTransportImpl.java:828)
+	at jcifs.smb.SmbTransportImpl.negotiatePeek(SmbTransportImpl.java:603)
+	at jcifs.smb.SmbTransportImpl.negotiate(SmbTransportImpl.java:512)
+	at jcifs.smb.SmbTransportImpl.doConnect(SmbTransportImpl.java:706)
+	at jcifs.util.transport.Transport.run(Transport.java:732)
+	... 1 more
+  
+  
+  ------------------------------------------------------------------
+  
