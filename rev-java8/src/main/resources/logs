@@ -1,7 +1,7 @@
 Server Support only SMB210 but client uses SMB1 
 
 17:44:46.678 [main] DEBUG jcifs.smb.SmbTreeConnection - Referral failed, trying next
-jcifs.smb.SmbException: Failed to connect: Anto-pc/XXXX:XXXX:XXX:9999:XXXX:XXXX:999:XXXX
+jcifs.smb.SmbException: Failed to connect: Dummy-pc/XXXX:XXXX:XXX:9999:XXXX:XXXX:999:XXXX
 	at jcifs.smb.SmbTransportImpl.ensureConnected(SmbTransportImpl.java:689)
 	at jcifs.smb.SmbTransportPoolImpl.getSmbTransport(SmbTransportPoolImpl.java:217)
 	at jcifs.smb.SmbTransportPoolImpl.getSmbTransport(SmbTransportPoolImpl.java:48)
@@ -30,7 +30,7 @@ Caused by: java.net.SocketException: Connection reset
 	at jcifs.smb.SmbTransportImpl.doConnect(SmbTransportImpl.java:706)
 	at jcifs.util.transport.Transport.run(Transport.java:732)
 	... 1 common frames omitted
-Exception in thread "main" jcifs.smb.SmbException: Failed to connect: Anto-pc/XXXX:XXXX:XXX:9999:XXXX:XXXX:999:XXXX
+Exception in thread "main" jcifs.smb.SmbException: Failed to connect: Dummy-pc/XXXX:XXXX:XXX:9999:XXXX:XXXX:999:XXXX
 	at jcifs.smb.SmbTransportImpl.ensureConnected(SmbTransportImpl.java:689)
 	at jcifs.smb.SmbTransportPoolImpl.getSmbTransport(SmbTransportPoolImpl.java:217)
 	at jcifs.smb.SmbTransportPoolImpl.getSmbTransport(SmbTransportPoolImpl.java:48)
@@ -66,7 +66,7 @@ Server SMB1 Only But Client is using only SMB210.
 
 
 18:01:36.625 [main] DEBUG jcifs.smb.SmbTreeConnection - Referral failed, trying next
-jcifs.smb.SmbException: Failed to connect: Anto-pc/XXXX:XXXX:XXX:9999:XXXX:XXXX:999:XXXX
+jcifs.smb.SmbException: Failed to connect: Dummy-pc/XXXX:XXXX:XXX:9999:XXXX:XXXX:999:XXXX
 	at jcifs.smb.SmbTransportImpl.ensureConnected(SmbTransportImpl.java:689)
 	at jcifs.smb.SmbTransportPoolImpl.getSmbTransport(SmbTransportPoolImpl.java:217)
 	at jcifs.smb.SmbTransportPoolImpl.getSmbTransport(SmbTransportPoolImpl.java:48)
@@ -88,7 +88,7 @@ Caused by: jcifs.CIFSException: Server does not support SMB2
 	at jcifs.smb.SmbTransportImpl.doConnect(SmbTransportImpl.java:706)
 	at jcifs.util.transport.Transport.run(Transport.java:732)
 	... 1 common frames omitted
-Exception in thread "main" jcifs.smb.SmbException: Failed to connect: Anto-pc/XXXX:XXXX:XXX:9999:XXXX:XXXX:999:XXXX
+Exception in thread "main" jcifs.smb.SmbException: Failed to connect: Dummy-pc/XXXX:XXXX:XXX:9999:XXXX:XXXX:999:XXXX
 	at jcifs.smb.SmbTransportImpl.ensureConnected(SmbTransportImpl.java:689)
 	at jcifs.smb.SmbTransportPoolImpl.getSmbTransport(SmbTransportPoolImpl.java:217)
 	at jcifs.smb.SmbTransportPoolImpl.getSmbTransport(SmbTransportPoolImpl.java:48)
